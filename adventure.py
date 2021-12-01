@@ -1,0 +1,108 @@
+
+def start():
+  print("You are standing in a dark room.\n")
+  print("There is a door to your left and right, which one do you take? (l or r)")
+  
+  answer = input("->").lower()
+
+  if "l" in answer:
+    # if player typed "left" or "l" lead him to bear_room()
+    bear_room()
+  elif "r" in answer:
+    # else if player typed "right" or "r" lead him to monster_room()
+    monster_room()
+  else:
+    # else call game_over() function
+    game_over("Jitna Bola hai Utna Hi Kara Karo")
+
+
+# bear room
+def bear_room():
+  print("There is a bear here.\n")
+  print("Behind the bear is another door.\n")
+  print("The bear is eating tasty honey!\n")
+  print("What would you do? (1 or 2)\n")
+  print("1). Take the honey.\n")
+  print("2). Taunt the bear.\n")
+
+  answer = input("->")
+  
+  if answer == "1":
+    # the player is dead!
+    game_over("The bear killed you.")
+  elif answer == "2":
+    # lead him to the diamond_room()
+    print("Your Good time, the bear moved from the door. You can go through it now!\n")
+    diamond_room()
+  else:
+    # else call game_over() function
+    game_over("Bro tu wahi hai naa jo bina exam diye pass huya hai.")
+
+
+# monster room
+def monster_room():
+  print("Now you entered the room of a monster!\n")
+  print("The monster is sleeping.\nBehind the monster, there is another door. What would you do? (1 or 2)\n")
+  print("1). Go through the door silently.\n")
+  print("2). Kill the monster and show your courage!\n")
+
+  answer = input("->")
+
+  if answer == "1":
+    # lead him to the diamond_room()
+    diamond_room()
+  elif answer == "2":
+    # the player is dead!
+    game_over("The monster was hungry, he/it ate you.")
+  else:
+    # game_over()
+    game_over("Ye game tere liye hai hi nahi jaa pehle numbers seekh ke aa")
+
+
+# diamond room
+def diamond_room():
+  print("You are now in a room filled with diamonds!\n")
+  print("And there is a door too!")
+  print("What would you do? (1 or 2)\n")
+  print("1). Take some diamonds and go through the door.\n")
+  print("2). Just go through the door.\n")
+
+  # take input()
+  answer = input("->")
+  
+  if answer == "1":
+    # the player is dead, call game_over()
+    game_over("They were cursed diamonds! The moment you touched it, the building collapsed, and you die!")
+  elif answer == "2":
+    # the player won the game
+    print("Nice, you're are an honest man! Congrats you win the game!\n")
+    # activate play_again() function
+    play_again()
+  else:
+    # call game_over()
+    game_over("Go and learn how to type a number.")
+
+
+# game_over function
+def game_over(reason):
+  print("\n" + reason)
+  print("Game Over!")
+  # ask player to play again or not by activating play_again() function
+  play_again()
+
+
+# function to ask play again or not
+def play_again():
+  print("Do you want to play again? (y or n)\n")
+  
+  # convert the player's input to lower_case
+  answer = input(">").lower()
+
+  if "y" in answer:
+    # if player typed "yes" or "y" start the game from the beginning
+    start()
+  else:
+    # if user types anything besides "yes" or "y", exit() the program
+    exit()
+
+start()
